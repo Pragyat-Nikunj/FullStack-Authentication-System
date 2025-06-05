@@ -37,8 +37,8 @@ export default function SignupPage() {
         }
     }, [user])
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen text-white bg-gray-700">
-            <h1 className="text-4xl text-blue-500 mb-5 font-bold">{loading ? "Processing..." : "Signup"}</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen text-white bg-linear-to-r from-gray-800 via-blue-700 to-gray-900">
+            <h1 className="text-4xl text-yellow-500 mb-5 font-bold">{loading ? "Processing..." : "Signup"}</h1>
             <hr />
             <div className="flex flex-col w-full max-w-md bg-gray-800 p-8 gap-2 rounded-xl shadow-lg">
             <label className="text-start text-xl my-3" htmlFor="username">Username</label>

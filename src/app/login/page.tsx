@@ -35,8 +35,8 @@ export default function LoginPage() {
         }
     }, [user])
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen text-white bg-gray-700">
-            <h1 className="text-4xl text-blue-500 mb-5 font-bold">{loading ? "Processing..." : "Login"}</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen text-white bg-linear-to-r from-gray-800 via-blue-700 to-gray-900">
+            <h1 className="text-4xl text-yellow-500 mb-5 font-bold">{loading ? "Processing..." : "Login"}</h1>
             <hr />
             <div className="flex flex-col w-full max-w-md bg-gray-800 p-8 rounded-xl shadow-lg gap-2">
             <label className="text-start text-xl my-3" htmlFor="email">Email</label>
@@ -57,12 +57,14 @@ export default function LoginPage() {
              onChange={(e) => setUser({...user, password:e.target.value})}
              placeholder="Password"
             />
+            
             <button
             onClick={onLogin}
             className={`px-3 py-2 font-semibold my-4 rounded-xl text-xl shadow-3xl transition-all duration-200
                 ${buttonDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 cursor-pointer"}`}
             disabled={buttonDisabled}
             >{buttonDisabled ? "No Login" : "Login"}</button>
+            <Link href="/forgotpassword" className="text-end text-blue-500 underline">Forgot Password?</Link>
             <p className="text-center my-3">Don't have an account? Click <Link href='/signup' className="text-blue-500 underline">here</Link> to Signup</p>
             </div>
         </div>
