@@ -40,10 +40,10 @@ export default function SignupPage() {
         <div className="flex flex-col items-center justify-center min-h-screen text-white bg-gray-700">
             <h1 className="text-4xl text-blue-500 mb-5 font-bold">{loading ? "Processing..." : "Signup"}</h1>
             <hr />
-            <div className="flex flex-col w-full max-w-md bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="flex flex-col w-full max-w-md bg-gray-800 p-8 gap-2 rounded-xl shadow-lg">
             <label className="text-start text-xl my-3" htmlFor="username">Username</label>
             <input
-             className="py-2 px-3 focus:outline-none bg-gray-600 rounded"
+             className="py-2 px-3 focus:outline-none bg-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:bg-gray-700"
              id="username"
              type="text"
              value={user.username}
@@ -52,7 +52,7 @@ export default function SignupPage() {
             />
             <label className="text-start text-xl my-3" htmlFor="email">Email</label>
             <input
-             className="py-2 px-3 focus:outline-none bg-gray-600 rounded"
+             className="py-2 px-3 focus:outline-none bg-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:bg-gray-700"
              id="email"
              type="text"
              value={user.email}
@@ -61,16 +61,17 @@ export default function SignupPage() {
             />
             <label className="text-start text-xl my-3" htmlFor="password">Password</label>
             <input
-             className="py-2 px-3 focus:outline-none bg-gray-600 rounded"
+             className="py-2 px-3 focus:outline-none bg-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:bg-gray-700"
              id="password"
-             type="text"
+             type="password"
              value={user.password}
              onChange={(e) => setUser({...user, password:e.target.value})}
              placeholder="Password"
             />
             <button
             onClick={onSignup}
-            className="bg-sky-500 hover:bg-sky-600 px-3 py-2 font-semibold my-4 rounded-xl text-xl shadow-3xl"
+            className={`px-3 py-2 font-semibold my-4 rounded-xl text-xl shadow-3xl transition-all duration-200
+        ${buttonDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 cursor-pointer"}`}
             disabled={buttonDisabled}>{buttonDisabled ? "No Signup" : "Signup"}</button>
             <p className="text-center my-3">Already have an account? Click <Link href='/login' className="text-blue-500 underline">here</Link> to Login</p>
             </div>
