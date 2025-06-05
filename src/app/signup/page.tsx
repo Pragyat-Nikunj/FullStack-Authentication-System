@@ -19,6 +19,7 @@ export default function SignupPage() {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user);
             console.log("Signup success", response.data);
+            toast.success("Signup success");
             router.push("/login");
         } catch(error : any) {
             console.log("Signup failed", error.message);
@@ -36,27 +37,31 @@ export default function SignupPage() {
         }
     }, [user])
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-3">
-            <h1>{loading ? "Processing" : "Signup"}</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen text-white bg-gray-700">
+            <h1 className="text-4xl text-blue-500 mb-5 font-bold">{loading ? "Processing..." : "Signup"}</h1>
             <hr />
-            <label htmlFor="username">Username</label>
+            <div className="flex flex-col w-full max-w-md bg-gray-800 border border-gray-500 p-6 rounded-xl shadow-lg">
+            <label className="text-start text-xl my-3" htmlFor="username">Username</label>
             <input
+             className="py-2 px-3 focus:outline-none bg-gray-500 rounded"
              id="username"
              type="text"
              value={user.username}
              onChange={(e) => setUser({...user, username:e.target.value})}
              placeholder="Username"
             />
-            <label htmlFor="email">Email</label>
+            <label className="text-start text-xl my-3" htmlFor="email">Email</label>
             <input
+             className="py-2 px-3 focus:outline-none bg-gray-500 rounded"
              id="email"
              type="text"
              value={user.email}
              onChange={(e) => setUser({...user, email:e.target.value})}
              placeholder="Email"
             />
-            <label htmlFor="password">Password</label>
+            <label className="text-start text-xl my-3" htmlFor="password">Password</label>
             <input
+             className="py-2 px-3 focus:outline-none bg-gray-500 rounded"
              id="password"
              type="text"
              value={user.password}
@@ -65,8 +70,10 @@ export default function SignupPage() {
             />
             <button
             onClick={onSignup}
-            >{buttonDisabled ? "No Signup" : "Signup"}</button>
-            <p>Already have an account? Click <Link href='/login'>here</Link> to Login</p>
+            className="bg-sky-500 hover:bg-sky-600 px-3 py-2 font-semibold my-4 rounded-xl text-xl"
+            disabled={buttonDisabled}>{buttonDisabled ? "No Signup" : "Signup"}</button>
+            <p className="text-center my-3">Already have an account? Click <Link href='/login' className="text-blue-500 underline">here</Link> to Login</p>
+            </div>
         </div>
     )
 }
